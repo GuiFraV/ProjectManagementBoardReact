@@ -1,24 +1,33 @@
-import './Task.css'
+import styled from 'styled-components';
+
+
+
+const TaskWrapper = styled.div`
+  background: darkGray;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 0% 5% 5% 5%;
+`;
+
+const Title = styled.h3`
+  width: 100%;
+  margin: 0;
+`;
+
 
 function Task({ id, title, body, onDragStart }) {
 
-    console.log(onDragStart)
-
-    function onDragEnter(e) {
-        e.preventDefault();
-    }
+console.log(typeof onDragStart);
 
   return (
-    <div 
-        className='Task-wrapper'
-        draggable='true'
-        onDragStart={(e) => onDragStart(e, id)}
-        onDragEnter={onDragEnter}
+    <TaskWrapper
+      draggable
+      onDragStart={(e) => onDragStart(e, id)}
     >
-       <h3>{title}</h3>
-       <p>{body}</p> 
-    </div>
-  )
+      <Title>{title}</Title>
+      <p>{body}</p>
+    </TaskWrapper>
+  );
 }
 
-export default Task
+export default Task;
